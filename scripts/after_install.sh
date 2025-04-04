@@ -2,18 +2,18 @@
 
 cd /home/ec2-user/nest-app
 
-# Make sure the deploy user owns the files
-sudo chown -R ec2-user:ec2-user .
+# Make sure ec2-user owns everything
+chown -R ec2-user:ec2-user .
 
-# Install dependencies
+# Install dependencies as ec2-user
 npm install
 
-# Pull .env from SSM
+# Pull .env from SSM Parameter Store
 aws ssm get-parameter \
   --name "/prod/nestjs/env" \
   --with-decryption \
   --query "Parameter.Value" \
   --output text > .env
 
-# Secure the .env file
+# Restrict permissions
 chmod 600 .env
