@@ -1,15 +1,19 @@
 version: 0.0
 os: linux
+
 files:
   - source: /
     destination: /home/ec2-user/nest-app
+
 hooks:
   BeforeInstall:
     - location: scripts/before_install.sh
-      runas: ec2-user
+      runas: root # 🛠️ Needs root to delete/fix files
+
   AfterInstall:
     - location: scripts/after_install.sh
-      runas: ec2-user
+      runas: ec2-user # 👤 Runs npm install, creates .env
+
   ApplicationStart:
     - location: scripts/start.sh
-      runas: ec2-user
+      runas: ec2-user # 🚀 Starts the app via PM2
