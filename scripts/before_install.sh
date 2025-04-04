@@ -1,6 +1,10 @@
 #!/bin/bash
 
-# Fix permissions so ec2-user can delete old files
-sudo chown -R ec2-user:ec2-user .
+# Ensure the app directory exists
+mkdir -p /home/ec2-user/nest-app
 
+# Give ownership to ec2-user
+chown -R ec2-user:ec2-user /home/ec2-user/nest-app
+
+# Clean up old files (now that ec2-user owns it)
 rm -rf /home/ec2-user/nest-app/*
