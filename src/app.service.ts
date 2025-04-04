@@ -5,6 +5,6 @@ import { ConfigService } from '@nestjs/config';
 export class AppService {
   constructor(private config: ConfigService) {}
   getHello(): string {
-    return `Hello server from ${this.config.get('NODE_ENV')} This has developed by shopnil`;
+    return `Hello server from ${this.config.get('NODE_ENV')} This has developed by sidrat`;
   }
 }
