@@ -3,7 +3,7 @@
 cd /home/ec2-user/nest-app
 
 # 🔐 Fix ownership (in case files are owned by root)
-chown -R ec2-user:ec2-user .
+chown -R ec2-user:ec2-user /home/ec2-user/nest-app
 
 # ✅ Now install dependencies
 npm install
